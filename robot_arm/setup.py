@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'RCA'
+package_name = 'robot_arm'
 
 setup(
     name=package_name,
@@ -13,8 +13,8 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='ros2',
-    maintainer_email='messerschmidt.markus@web.de',
+    maintainer='rosmobile',
+    maintainer_email='rosmobile@todo.todo',
     description='TODO: Package description',
     license='TODO: License declaration',
     tests_require=['pytest'],

@@ -1,0 +1,17 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/ros2/udemy_ws/install/rover/lib/python3.8/site-packages",
+        "/home/ros2/udemy_ws/install/robot_arm/lib/python3.8/site-packages",
+        "/home/ros2/udemy_ws/install/prius_line_following/lib/python3.8/site-packages",
+        "/home/ros2/udemy_ws/install/my_urdf_kurs/lib/python3.8/site-packages",
+        "/home/ros2/udemy_ws/install/my_big_bazu/lib/python3.8/site-packages",
+        "/home/ros2/udemy_ws/install/kuka_kr210_arm/lib/python3.8/site-packages",
+        "/home/ros2/udemy_ws/install/big_bazu/lib/python3.8/site-packages",
+        "/home/ros2/yt_ws/install/watermax/lib/python3.8/site-packages",
+        "/home/ros2/yt_ws/install/r2_water_maxi/lib/python3.8/site-packages",
+        "/home/ros2/x2_ws/build/serial_motor_demo",
+        "/home/ros2/x2_ws/install/serial_motor_demo/lib/python3.8/site-packages",
+        "/home/ros2/x2_ws/install/serial_motor_demo_msgs/lib/python3.8/site-packages",
+        "/opt/ros/foxy/lib/python3.8/site-packages"
+    ]
+}

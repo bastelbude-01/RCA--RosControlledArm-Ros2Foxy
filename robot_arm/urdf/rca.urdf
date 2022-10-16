@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <robot name="ros_controlled_arm">
+
     <link name="world"/>
 
     <link name="base_link">
         <visual name="Base">
             <geometry>                
-                <mesh filename="package://robot_arm/meshes/" scale="1.0"/>
+                <cylinder radius="0.1" length="0.058"/> 
             </geometry>
             <material name="LightGrey">
                 <color rgba="0.7 0.7 0.7 1.0"/>
@@ -13,7 +14,7 @@
         </visual>
         <collision>
             <geometry>
-                <cylinder radius="0.1" length="0.058"/>
+                <cylinder radius="0.1" length="0.058"/> 
             </geometry>
         </collision>
         <inertial>
@@ -30,5 +31,148 @@
         <origin xyz="0 0 0.0285" rpy="0 0 0"/>
         <axis xyz="0 0 0"/>
     </joint>
+
+    <link name="anker1">
+        <visual name="anker1">
+            <geometry>                
+                <box size="0.5 0.03 0.02"/> 
+            </geometry>
+            <material name="LightGrey">
+                <color rgba="0.7 0.7 0.7 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.5 0.1 0.02"/> 
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link>
+    <joint name="anker_to_base" type="fixed">
+        <parent link="world"/>
+        <child link="anker1"/>
+        <origin xyz="0 0 0.01" rpy="0 0 0"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+
+    <link name="anker2">
+        <visual name="anker3">
+            <geometry>                
+                <box size="0.5 0.03 0.02"/> 
+            </geometry>
+            <material name="LightGrey">
+                <color rgba="0.7 0.3 0.7 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.8 0.2 0.02"/> 
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.5 0.0 0.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link>
+    <joint name="anker2_to_base" type="fixed">
+        <parent link="world"/>
+        <child link="anker2"/>
+        <origin xyz="0 0 0.01" rpy="0 0 1.57 "/>
+        <axis xyz="0 0 0"/>
+    </joint>
+
+
+
+
+
+    <link name="arm1_to_base">
+        <visual name="arm_base">
+            <geometry>                
+                <cylinder radius="0.1" length="0.058"/> 
+            </geometry>
+            <material name="green">
+                <color rgba="0.5 0.7 0.1 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1" length="0.058"/> 
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="10.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link>
+
+    <joint name="arm_base" type="continuous">
+        <parent link="base_link"/>
+        <child link="arm1_to_base"/>
+        <origin xyz="0 0 0.0585" rpy="0 0 0"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+
+    <link name="arm1_wurfel">
+        <visual name="wurfel">
+            <geometry>                
+                <box size="0.04 0.1 0.08"/> 
+            </geometry>
+            <material name="green">
+                <color rgba="0.5 0.7 0.1 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.04 0.09 0.06"/> 
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link>
+
+    <joint name="wurfel_to_arm_base" type="fixed">
+        <parent link="arm1_to_base"/>
+        <child link="arm1_wurfel"/>
+        <origin xyz="0 0.035 0.059" rpy="0 0 0"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+
+    <link name="arm2_to_wurfel">
+        <visual name="arm2">
+            <geometry>                
+                <box size="0.03 0.5 0.08"/> 
+            </geometry>
+            <material name="red">
+                <color rgba="1 0 0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.09 0.09 0.06"/> 
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1.0"/>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link>
+
+    <joint name="arm2_to_arm1" type="revolut">
+        <parent link="arm1_wurfel"/>
+        <child link="arm2_to_wurfel"/>
+        <origin xyz="-0.035 -0.23 0.02" rpy="0 0 0"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+
 
 </robot>

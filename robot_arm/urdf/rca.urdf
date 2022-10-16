@@ -5,7 +5,7 @@
     <link name="base_link">
         <visual name="Base">
             <geometry>                
-                <cylinder radius="0.1" length="0.058"/>
+                <mesh filename="package://robot_arm/meshes/" scale="1.0"/>
             </geometry>
             <material name="LightGrey">
                 <color rgba="0.7 0.7 0.7 1.0"/>
